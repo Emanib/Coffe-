@@ -22,15 +22,15 @@ const Small = styled.div`
 background-color:#F4F7F5;
 width:159px;
 height:157px;
-    position:relative;
-    top:193px;
-    left:157px;
+ position:relative;
+top:193px;
+left:164px;
 `
 const Background = styled.div`
 background-color:#E3EBE7;
 
-    position:absolute;
-    top:90px;
+  position:absolute;
+  top:90px;
   width:350px;
   height:320px;
   left:838px; 
@@ -68,11 +68,8 @@ color:#fff;
 `
 const Follow = styled.h3`
 font-family:'Josefin Sans';
-/* font-size:1.1em; */
 color:#444A4A;
-/* font-weight:700; */
   transform: rotate(-90deg);
-  line-height:28px;
 font-style:normal; 
 `
 const Box1 = styled.div`
@@ -114,8 +111,7 @@ display:flex;
 flex-direction:column;
 position:relative;
 align-items:center; 
-left:90%;
-top:15px;
+left:85%;
 width:100px;
 
 `
