@@ -3,28 +3,29 @@ const NavContainer = styled.div`
  display:flex;
  height:100%;
  /* background-color:pink;  */
- align-items:center; 
+ align-items:center;
+ margin-right:50px;
 `
 const LinkWrapper = styled.ul`
 margin:0;
 padding:0;
 list-style:none; 
 display:flex;
-justify-content:space-between;
 
 `
+
 const LinkItem = styled.li`
 color:#000;
 height:100%;
+width:100%;
 font-weight:700;
 font-family:'Josefin Sans';
 font-size:16px;
 display:flex; 
 align-items: center;
- padding: .5em 1.1em;
-justify-content:space-between;
-background-color:pink;
-gap:1em;
+ padding: .5em 1.3em;
+/* background-color:pink; */
+gap:2.2em;
 
 
 `
@@ -47,12 +48,11 @@ const NavLink = (props) =>
         <NavContainer>
     <LinkWrapper>
  <LinkItem>
-    <Link href="#"> Home </Link>
      <Link href="#" >  About us </Link>
      <Link href="#">  Promotion </Link>
      <Link href="#">  Shop   </Link>
     <Link href="#">  Contacts  </Link>
-                    <Btn> Contact Us</Btn>    
+    <Btn> Contact Us</Btn>    
                 </LinkItem>
                   
   

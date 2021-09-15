@@ -28,3 +28,8 @@ width:100vw;
 /* ::-webkit-scrollbar-thumb:hover {
   background: #b30000; 
 } */ 
+.map
+{
+  width:10px; 
+  height:10px; 
+}

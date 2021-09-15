@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 import Toggle from './Toggle'
 import { useState } from 'react'
-import Logo from '../../images/Logo.svg'
-import Samwayle from '../../images/Samwayle.svg'
+// import Logo from '../../images/Logo.svg'
+// import Samwayle from '../../images/Samwayle.svg'
 import face from '../../images/face.svg'
 import inst from '../../images/inst.svg'
 import twitter from '../../images/twitter.svg'
@@ -15,11 +15,11 @@ const Container = styled.div`
  justify-content:flex-start;
  gap:5rem; 
  `
-const Logoo = styled.img`
-width:${({primary}) => primary ? "45px" : "106px"};
-position:${({primary})=> primary ? "absolute" : "relative"};
-/* right:${({primary}) => primary ? "62%" : ""}; */
- `
+// const Logoo = styled.img`
+// width:${({primary}) => primary ? "45px" : "106px"};
+// position:${({primary})=> primary ? "absolute" : "relative"};
+// /* right:${({primary}) => primary ? "62%" : ""}; */
+//  `
 const Box = styled.div`
   display:flex;
   justify-content:center;

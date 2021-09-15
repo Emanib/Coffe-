@@ -2,9 +2,8 @@ import NavLink from './NavLink';
 import Log from '../Logo/index'
 import styled from "styled-components";
 import NavLinkMob from './NavLinkMob'; 
-import {sizes} from '../Sizes'
+import {sizes} from './Sizes'
 import { useMediaQuery } from "react-responsive";
-
 const Box = styled.div`
   width: 100%;
   height: 60px;
@@ -27,7 +26,7 @@ const NavBar = () =>
                 {isMobile && <NavLinkMob />}
                 { !isMobile && <NavLink/>}
             </Right>
-         
+     
 
         </Box>
 
