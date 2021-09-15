@@ -2,9 +2,10 @@ import styled from 'styled-components'
 const NavContainer = styled.div`
  display:flex;
  height:100%;
+ width:100%; 
  /* background-color:pink;  */
  align-items:center;
- margin-right:50px;
+ margin-right:40px;
 `
 const LinkWrapper = styled.ul`
 margin:0;
@@ -23,9 +24,9 @@ font-family:'Josefin Sans';
 font-size:16px;
 display:flex; 
 align-items: center;
- padding: .5em 1.3em;
+ padding: .5em 1.2em;
 /* background-color:pink; */
-gap:2.2em;
+gap:2.1em;
 
 
 `
