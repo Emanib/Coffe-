@@ -3,16 +3,14 @@ import coffee from '../../images/coffee.svg'
 import face from '../../images/face.svg'
 import inst from '../../images/inst.svg'
 import twitter from '../../images/twitter.svg'
-const data = { content: "Drink coffee, enjoy with Samwyle",title:"Coffee Shop"}
+const data = { content: 'Drink coffee, enjoy with Samwyle', title: 'Coffee Shop' }
 const Box = styled.div`
-/* background-color:orange; */
 width:100%;
 height:100%;
 display:grid;
 grid-template-columns: 1fr 1.5fr;
 grid-template-rows:50vh;
  /* place-items: center; */
-/* align-items:center; */
 @media (max-width: 768px) {
 grid-template-columns:1fr;
 
@@ -34,7 +32,7 @@ background-color:#E3EBE7;
   width:350px;
   height:320px;
   left:838px; 
-`;
+`
 const Layer = styled.img`
 width:300px;
 height:250px;
@@ -49,7 +47,7 @@ line-height:53px;
 font-weight:400;
 color:#444A4A;
 `
-const Title = styled.h1 `
+const Title = styled.h1`
 font-family:'Josefin Sans';
 font-size:63px;
 font-weight:700;
@@ -73,12 +71,11 @@ color:#444A4A;
 font-style:normal; 
 `
 const Box1 = styled.div`
-/* background-color:#FFEBCD; */
   display:flex;
   flex-direction:column;
   align-items:center;
 width:100%; 
-/* margin-top:90px; */
+
 @media (max-width: 768px) {
 
   text-align:center;
@@ -91,7 +88,6 @@ width:100%;
 
 `
 const Box2 = styled.div`
-/* background-color:#FFF0F5 ; */
 
   @media (max-width: 768px) {
 display:none;
@@ -105,8 +101,7 @@ height:20px;
 margin:10px;
 
 `
-const Social= styled.div`
-/* background-color:green; */
+const Social = styled.div`
 display:flex;
 flex-direction:column;
 position:relative;
@@ -115,34 +110,28 @@ left:85%;
 width:100px;
 
 `
-const First = () =>
-{
-    return (
-        <Box>
-            <Box1 >
-                <Content> {data.content} </Content>
-                <Title> {data.title} </Title>
-                <Btn> Order here </Btn>
-            </Box1>
-            <Box2 >
-                
-                <Background>    <Layer src={coffee} alt="coffee" />      </Background>
-                <Small />
-                <Social>
-                    <Img src={ face } alt ="face" />
-                    <Img src= {inst} alt ="instagram " />
-                    <Img src={twitter} alt="twitter" />
-                    <Follow > Follow us </Follow>
-                </Social>
+const First = () => {
+  return (
+    <Box>
+      <Box1>
+        <Content> {data.content} </Content>
+        <Title> {data.title} </Title>
+        <Btn> Order here </Btn>
+      </Box1>
+      <Box2>
 
+        <Background> <Layer src={coffee} alt='coffee' /></Background>
+        <Small />
+        <Social>
+          <Img src={face} alt='face' />
+          <Img src={inst} alt='instagram ' />
+          <Img src={twitter} alt='twitter' />
+          <Follow> Follow us </Follow>
+        </Social>
+      </Box2>
+    </Box>
 
-            </Box2>
-       
-           
-            {/* <Box3 /> */}
-        </Box>
-
-     );
+  )
 }
- 
-export default First;
+
+export default First

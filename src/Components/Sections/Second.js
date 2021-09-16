@@ -7,12 +7,10 @@ const data = {
     
 }
 const Box = styled.div`
-/* background-color:orange; */
 margin-top:10rem;
 display:grid;
 grid-template-columns: .8fr 1fr ;
 grid-template-rows:50px;
-/* gap:8em;  */
 @media (max-width: 768px){
     display:flex;
     flex-direction:column;
@@ -49,27 +47,27 @@ font-weight:400;
 line-height:30px;
 @media (max-width: 768px)
 {
-    /* text-align:center; */
+   
     width:270px; 
 }
    width: 500px;
     white-space:wrap;
-    /* overflow: hidden; */
-    /* text-overflow: ellipsis; */
+
 `
 
 
 const Box2 = styled.div`
-/* background-color:red; */
+
   margin-left:100px;
 
 `
 const Img = styled.img`
 position:relative;
 top:15%;
-/* width:50%; */
+
 @media (max-width: 768px){
     width:70%;
+ 
 }
 `
 const Second = () =>
@@ -78,14 +76,11 @@ const Second = () =>
         
         <Box>
             <Box1>
-
                 <Img src={ cup} alt="cup" />
             </Box1>
             <Box2>
                 <Title>{data.title} </Title>
-
                 <Content> {data.content} </Content>
-
             </Box2>
 
 
