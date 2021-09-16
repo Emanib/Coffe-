@@ -1,9 +1,9 @@
-import NavLink from './NavLink';
+import NavLink from './NavLink'
 import Log from '../Logo/index'
-import styled from "styled-components";
-import NavLinkMob from './NavLinkMob'; 
-import {sizes} from './Sizes'
-import { useMediaQuery } from "react-responsive";
+import styled from 'styled-components'
+import NavLinkMob from './NavLinkMob'
+import { sizes } from './Sizes'
+import { useMediaQuery } from 'react-responsive'
 const Box = styled.div`
   width: 100%;
   height: 60px;
@@ -14,23 +14,21 @@ align-items: center;
     justify-content:space-between; 
 
 `
-const Left = styled.div``;
-const Right = styled.div``; 
-const NavBar = () =>
-{
-    const isMobile = useMediaQuery({maxWidth:sizes.mobile})
-    return (
-        <Box>
-            <Left>  <Log />  </Left>
-            <Right>
-                {isMobile && <NavLinkMob />}
-                { !isMobile && <NavLink/>}
-            </Right>
-     
+const Left = styled.div``
+const Right = styled.div``
+const NavBar = () => {
+  const isMobile = useMediaQuery({ maxWidth: sizes.mobile })
+  return (
+    <Box>
+      <Left>  <Log />  </Left>
+      <Right>
+        {isMobile && <NavLinkMob />}
+        {!isMobile && <NavLink />}
+      </Right>
 
-        </Box>
+    </Box>
 
-     );
+  )
 }
- 
-export default NavBar;
+
+export default NavBar

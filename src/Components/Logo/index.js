@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 import Logo from '../../images/Logo.svg'
-import Samwayle from '../../images/Samwayle.svg';
+import Samwayle from '../../images/Samwayle.svg'
 
 const Logoo = styled.div`
   display: flex;
@@ -8,16 +8,15 @@ const Logoo = styled.div`
   margin-left:40px;
 `
 
-const Log = () =>
-{
-    return (
-        <Logoo>
-            <img src = {Logo} alt ="log" />
-            <img src = {Samwayle}  alt = "log"/>
+const Log = () => {
+  return (
+    <Logoo>
+      <img src={Logo} alt='log' />
+      <img src={Samwayle} alt='log' />
 
-        </Logoo>
+    </Logoo>
 
-    );
+  )
 }
- 
-export default Log;
+
+export default Log

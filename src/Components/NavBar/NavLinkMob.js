@@ -13,7 +13,8 @@ const Container = styled.div`
  align-items:center;
  padding:1em ;
  justify-content:flex-start;
- gap:5rem; 
+ gap:5rem;
+  z-index:999; 
  `
 // const Logoo = styled.img`
 // width:${({primary}) => primary ? "45px" : "106px"};
@@ -46,12 +47,13 @@ position:fixed;
 left:0;
 top:70px;
 list-style:none;
-background-color: pink;
+/* background-color: pink; */
 
 
  
 
 `
+
 const LinkItem = styled.li`
 /* background-color:red; */
 width:100%;
@@ -73,37 +75,32 @@ text-decoration:none;
 color:inherit;
 font-size:inherit; 
 `
-const NavLinkMob = (props) =>
-{
-    const [isOpen,setOpen] = useState(false)
-    return ( 
-        <Container >
-            <Toggle isOpen={isOpen} toggle={ ()=> setOpen(!isOpen) }/>
-            {isOpen && (<LinkWrapper>
-                <LinkItem> <Link href="/"> Home </Link></LinkItem>
-                <LinkItem>  <Link href="/"> About us  </Link></LinkItem>
-                <LinkItem><Link href="/"> Promotion </Link>   </LinkItem>
-                <LinkItem> <Link href="/"> Shop </Link> </LinkItem>
-                <LinkItem> <Link href="/"> Contacts</Link></LinkItem>
-                <Box >
-                <Social src={inst} />
-                 <Social src={face} />
-                <Social src={twitter} />
-                </Box>
-               
-          
-            </LinkWrapper>)}
-            {/* <div> 
+const NavLinkMob = (props) => {
+  const [isOpen, setOpen] = useState(false)
+  return (
+    <Container>
+      <Toggle isOpen={isOpen} toggle={() => setOpen(!isOpen)} />
+      {isOpen && (<LinkWrapper>
+        <LinkItem> <Link href='/'> Home </Link></LinkItem>
+        <LinkItem>  <Link href='/'> About us  </Link></LinkItem>
+        <LinkItem><Link href='/'> Promotion </Link>   </LinkItem>
+        <LinkItem> <Link href='/'> Shop </Link> </LinkItem>
+        <LinkItem> <Link href='/'> Contacts</Link></LinkItem>
+        <Box>
+          <Social src={inst} />
+          <Social src={face} />
+          <Social src={twitter} />
+        </Box>
+
+                  </LinkWrapper>)}
+      {/* <div>
                 <Logoo  primary src={Logo} alt="logo" />
                 <Logoo   src={ Samwayle} alt="text" />
             </div> */}
-        
-            
-           
-      </Container>
 
+    </Container>
 
-     );
+  )
 }
- 
-export default NavLinkMob;
+
+export default NavLinkMob

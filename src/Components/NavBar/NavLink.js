@@ -43,24 +43,22 @@ border:none;
 padding: .7em 1.3em;
 border-radius: 7px;
 font-weight: inherit;`
-const NavLink = (props) =>
-{
-    return (
-        <NavContainer>
-    <LinkWrapper>
- <LinkItem>
-     <Link href="#" >  About us </Link>
-     <Link href="#">  Promotion </Link>
-     <Link href="#">  Shop   </Link>
-    <Link href="#">  Contacts  </Link>
-    <Btn> Contact Us</Btn>    
-                </LinkItem>
-                  
-  
-        </LinkWrapper>
-        </NavContainer>
-   
-     );
+const NavLink = (props) => {
+  return (
+    <NavContainer>
+      <LinkWrapper>
+        <LinkItem>
+          <Link href='#'>  About us </Link>
+          <Link href='#'>  Promotion </Link>
+          <Link href='#'>  Shop   </Link>
+          <Link href='#'>  Contacts  </Link>
+          <Btn> Contact Us</Btn>
+        </LinkItem>
+
+      </LinkWrapper>
+    </NavContainer>
+
+  )
 }
- 
-export default NavLink;
+
+export default NavLink
