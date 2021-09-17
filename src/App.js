@@ -1,25 +1,23 @@
 
 import './App.css'
-// import NavLinkMob from './Components/NavBar/NavLinkMob'
-import NavBar from './Components/NavBar'
- import {Card} from './Components/Card/Slider'
-// import {Map} from './Components/Map'
-import First from './Components/Sections/First'
-import Second from './Components/Sections/Second'
-import Third from './Components/Sections/Third'
-
-function App () {
+import Home from './Pages/Home'
+import Shop from './Pages/Shop'
+import RouterWrapper from './Routes/RouterWrapper'
+import { BrowserRouter as Router, Switch } from "react-router-dom";
+import Layout from './Layout/Layout'
+function App()
+{
+console.log(process.env.REACT_APP_API_URL)
+  
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <NavBar />
-        {/* <Map className ="map"/> */}
-      </header>
-      <First />
-      <Second />
-      <Third />
-      <Card />
-    </div>
+    <Router>
+      <Switch>
+        <RouterWrapper path="/"  exact component={Home} layout = {Layout} />
+        <RouterWrapper path = "/shop" exact component = {Shop} layout = {Layout} />
+
+     </Switch>
+
+     </Router>
   )
 }
 
