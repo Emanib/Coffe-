@@ -1,8 +1,10 @@
-const Shop = () => {
+import Fetch from '../Fetch'
+const Shop = () =>
+{
     return (
         
         <div>
-            Products 
+          <Fetch />
         </div>
     );
 }
