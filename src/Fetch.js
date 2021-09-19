@@ -1,10 +1,11 @@
 import styled from 'styled-components'
-
+import Header from './Components/Shop/Header'
 import axios from 'axios'
-import { useState, useEffect ,useRef} from 'react'
+import { useState, useEffect } from 'react'
 import ProductSlider from './Components/Shop/Product'
 import Arroww from './images/Arroww.svg'
 import Arrow from './images/Arrow.svg'
+import { useDispatchCart } from "./Components/Shop/Context";
 const Arrow1 = styled.img`
 /* width:100%;  */
 z-index:10;
@@ -31,7 +32,6 @@ const Fetch = () =>
   const [products, setProducts] = useState({ loading: false, data: null, error: false });
   const [current, setCurrent] = useState(0)
 
-  const time = useRef(null)
   useEffect(() =>
   {
     setProducts({
@@ -45,6 +45,10 @@ const Fetch = () =>
 
   }, [url])
   let content = null;
+   const dispatch = useDispatchCart()
+  const addToCart = (item) => {
+dispatch({type:'ADD',item})
+  };
   if (products.error)
   {
     content = <p> error</p>
@@ -59,8 +63,17 @@ const Fetch = () =>
   if (products.data)
   {
     var length = products.data.length
-      content = products.data.map((product,index) => (
-  current === index &&( <ProductSlider product = {product} key= {index} />)
+    content = products.data.map((product, index) => (
+        
+        current === index && (
+        <div key = {index}>
+           <button onClick = {()=>addToCart(product)}  > Hello  </button> 
+               <ProductSlider product={product} key={product.id} />
+             
+          </div>
+     
+
+        )
          
     )) 
 
@@ -68,20 +81,22 @@ const Fetch = () =>
    const nextSlide = () =>
     {
      setCurrent(current === length - 1 ? 0 : current + 1)
-     console.log(current)
   }
   const prevSlide = () =>
   {
     setCurrent(current === 0 ? length - 1 : current - 1)
-    console.log(current)
     }
     
-    return (
-      <div style = {{display:"flex"}}>
+  return (
+      <div> 
+<Header />
+         <div style = {{display:"flex"}}>
           <Arrow1 src={Arrow} alt='arrow' onClick = {prevSlide}  />
        <div style={{ display: "flex" }}>  {content}  </div>
-           <Arrow2 src={Arroww} alt='arrow' onClick = { nextSlide}  />
+        <Arrow2 src={Arroww} alt='arrow' onClick={nextSlide} />
 </div>
+      </div>
+   
 
       );
 }
