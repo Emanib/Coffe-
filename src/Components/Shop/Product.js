@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 
+
 const Wrapper = styled.div`
 width:100%;
 height:100%;
@@ -31,7 +32,7 @@ width:100;
 `;
 const Slider = styled.div`
 position:absolute;
-top:0;
+top:50px;
 left:0;
 width:100%;
 height:100%;
@@ -86,6 +87,7 @@ h1
 
 const ProductSlider = ({product}) =>
 {
+   
     return ( 
         <Wrapper>
             <Slider>
@@ -117,7 +119,7 @@ const ProductSlider = ({product}) =>
                            )}
                         </div>
             <p> {product.price} </p>
-            <Btn> order now </Btn>
+            {/* <Btn > order now </Btn> */}
                     </Content>
         
                 </Slide>
