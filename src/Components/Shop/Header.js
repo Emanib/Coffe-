@@ -6,6 +6,7 @@ const Header = () =>
     const items = useCart()
     return (
         <header>
+           
             <Link to = "/cart">  Cart  ({items.length})</Link>
         </header>
 

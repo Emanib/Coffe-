@@ -2,8 +2,11 @@ import NavLink from './NavLink'
 import Log from '../Logo/index'
 import styled from 'styled-components'
 import NavLinkMob from './NavLinkMob'
+import {useState} from 'react'
 import { sizes } from './Sizes'
 import { useMediaQuery } from 'react-responsive'
+import Toggle from './Toggle'
+
 const Box = styled.div`
   width: 100%;
   height: 60px;
@@ -16,13 +19,19 @@ align-items: center;
 `
 const Left = styled.div``
 const Right = styled.div``
-const NavBar = () => {
+const NavBar = () =>
+{
+
   const isMobile = useMediaQuery({ maxWidth: sizes.mobile })
+      //  if ( isOpen)
+      //   {
+      //     return( <NavLinkMob /> )
+      // }
   return (
     <Box>
       <Left>  <Log />  </Left>
       <Right>
-        {isMobile && <NavLinkMob />}
+        {isMobile  && <NavLinkMob />}
         {!isMobile && <NavLink />}
       </Right>
 

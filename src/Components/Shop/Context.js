@@ -1,11 +1,14 @@
 import React, { useReducer, useContext, createContext } from "react";
 
-const CartStateContext = createContext();
+export const CartStateContext = createContext();
 const CartDispatchContext = createContext();
 
 const reducer = (state, action) => {
-  switch (action.type) {
+  switch (action.type)
+  {
+  
     case "ADD":
+      console.log(action.item)
       return [...state, action.item];
     case "REMOVE":
       const newArr = [...state];
@@ -15,14 +18,14 @@ const reducer = (state, action) => {
       throw new Error(`unknown action ${action.type}`);
   }
 };
-
 export const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, []);
-
+// console.log("context:")
   return (
     <CartDispatchContext.Provider value={dispatch}>
       <CartStateContext.Provider value={state}>
         {children}
+        
       </CartStateContext.Provider>
     </CartDispatchContext.Provider>
   );

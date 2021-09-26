@@ -6,12 +6,18 @@ import RouterWrapper from './Routes/RouterWrapper'
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import Layout from './Layout/Layout'
 import Store from './Pages/Cart'
+import NavBar from './Components/NavBar/index'
+
 function App()
 {
 console.log(process.env.REACT_APP_API_URL)
   
   return (
-    <Router>
+    <div>
+       <NavBar />
+      <div className = "parent">
+        
+        <Router>
       <Switch>
         <RouterWrapper path="/"  exact component={Home} layout = {Layout} />
         <RouterWrapper path="/shop" exact component={Shop} layout={Layout} />
@@ -20,6 +26,11 @@ console.log(process.env.REACT_APP_API_URL)
      </Switch>
 
      </Router>
+</div>
+     
+
+    </div>
+   
   )
 }
 

@@ -1,5 +1,7 @@
 import { useCart, useDispatchCart } from "../Components/Shop/Context";
-import ProductSlider from '../Components/Shop/Product'
+import { Link } from "react-router-dom";
+// import ProductSlider from "../Components/Shop/Product";
+
 const CartItem = ({ product, index, handleRemove }) => {
   return (
     <article>
@@ -16,6 +18,7 @@ const CartItem = ({ product, index, handleRemove }) => {
                 currency: "USD"
               })}
             </dd>
+            <h1> Color {product.state} </h1> 
           </dl>
           <button onClick={() => handleRemove(index)}>Remove from cart</button>
         </div>
@@ -44,6 +47,7 @@ export default function Store()
   else  if(items.length !==0)
     {
         return (<main>
+             <Link to = "/shop">  shop </Link>
             <p>
         Total price:{" "}
         {totalPrice.toLocaleString("en", {
