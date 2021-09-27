@@ -18,7 +18,7 @@ const CartItem = ({ product, index, handleRemove }) => {
                 currency: "USD"
               })}
             </dd>
-            <h1> Color {product.state} </h1> 
+            <h1> Color {product.cl} </h1> 
           </dl>
           <button onClick={() => handleRemove(index)}>Remove from cart</button>
         </div>

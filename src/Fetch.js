@@ -66,9 +66,9 @@ export default function Fetch() {
   }
 
   content = products?.map((product, index) => (
-    <div key={index}>
+   current ===index &&( <div key={index}>
       <ProductSlider product={product} />
-    </div>
+    </div>)
   ));
   const nextSlide = () => setCurrent(current === content.length - 1 ? 0 : current + 1);
   const prevSlide = () => setCurrent(current === 0 ? content.length - 1 : current - 1);

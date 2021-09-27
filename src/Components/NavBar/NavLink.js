@@ -31,7 +31,7 @@ gap:2.1em;
 
 `
 
-const Link = styled.a`
+const Link1 = styled.a`
     color: inherit;
     text-decoration: none;
     font-weight: inherit; 
@@ -43,15 +43,19 @@ border:none;
 padding: .7em 1.3em;
 border-radius: 7px;
 font-weight: inherit;`
-const NavLink = (props) => {
+const NavLink = (props) =>
+{
+
   return (
     <NavContainer>
       <LinkWrapper>
         <LinkItem>
-          <Link href='#'>  About us </Link>
-          <Link href='#'>  Promotion </Link>
-          <Link href='#'>  Shop   </Link>
-          <Link href='#'>  Contacts  </Link>
+          <Link1 href='#'>  About us </Link1>
+          <Link1 href='#'>  Promotion </Link1>
+          <Link1 href='#'>  Shop   </Link1>
+          <Link1 href='#'>  Contacts  </Link1>
+    
+
           <Btn> Contact Us</Btn>
         </LinkItem>
 
