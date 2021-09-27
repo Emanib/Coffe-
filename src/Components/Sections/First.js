@@ -3,6 +3,8 @@ import coffee from '../../images/coffee.svg'
 import face from '../../images/face.svg'
 import inst from '../../images/inst.svg'
 import twitter from '../../images/twitter.svg'
+import { Link } from "react-router-dom";
+
 const data = { content: 'Drink coffee, enjoy with Samwyle', title: 'Coffee Shop' }
 const Box = styled.div`
 width:100%;
@@ -33,7 +35,7 @@ background-color:#E3EBE7;
   height:320px;
   left:838px; 
 `
-const Layer = styled.img`
+const Layer = styled.svg`
 width:300px;
 height:250px;
 position:absolute;
@@ -94,11 +96,11 @@ display:none;
   }
 
 `
-const Img = styled.img`
+const Img = styled.svg`
 width:20px;
 height:20px;
-
 margin:10px;
+
 
 `
 const Social = styled.div`
@@ -116,7 +118,8 @@ const First = () => {
       <Box1>
         <Content> {data.content} </Content>
         <Title> {data.title} </Title>
-        <Btn> Order here </Btn>
+        <Link to = "/shop">  <Btn> Order here </Btn>
+ </Link> 
       </Box1>
       <Box2>
 

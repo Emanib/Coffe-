@@ -6,6 +6,8 @@ import ProductSlider from './Components/Shop/Product'
 import Arroww from './images/Arroww.svg'
 import Arrow from './images/Arrow.svg'
 import { useDispatchCart } from "./Components/Shop/Context";
+import { CartStateContext } from './Components/Shop/Context'
+import {useContext } from 'react'
 const Arrow1 = styled.img`
 /* width:100%;  */
 z-index:10;
@@ -25,80 +27,62 @@ right:100px;
 justify-content:space-between;
 
 `
-const Fetch = () =>
-{
-   
-    const url = process.env.REACT_APP_API_URL
-  const [products, setProducts] = useState({ loading: false, data: null, error: false });
-  const [current, setCurrent] = useState(0)
+export default function Fetch() {
+  // const value  = useContext(CartStateContext)
+  // console.log(`"value":${JSON.stringify(value)}`)
+  const url = process.env.REACT_APP_API_URL;
+      // const [state,setState] = useState("hot")
 
-  useEffect(() =>
-  {
-    setProducts({
-      loading: true, data: null, error: false
+  const [products, setProducts] = useState();
+  const [current, setCurrent] = useState(0);
+  const [error, setError] = useState(false); 
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let kkrp = true;
+    if (!kkrp) return;
+
+    axios.get(url).then(res => {
+      setProducts(res.data);
+      setLoading(false);
+      setError(false)
+    }).catch((error) => {
+      setError(true);
     });
-   axios.get(url).then(res => { setProducts({ loading: false, data: res.data, error: false });  }).catch(() =>
-    {
-      setProducts({loading:false,data:null,error:true})
-    })
+    
+    return () => {
+      kkrp = false; 
+    }
+  }, [url]);
 
+  let content;
 
-  }, [url])
-  let content = null;
-   const dispatch = useDispatchCart()
-  const addToCart = (item) => {
-dispatch({type:'ADD',item})
-  };
-  if (products.error)
-  {
+  if (error) {
     content = <p> error</p>
-    }
- 
-  if (products.loading)
-  {
-    
-    content =  <div> loading </div>
-  
   }
-  if (products.data)
-  {
-    var length = products.data.length
-    content = products.data.map((product, index) => (
-        
-        current === index && (
-        <div key = {index}>
-           <button onClick = {()=>addToCart(product)}  > Hello  </button> 
-               <ProductSlider product={product} key={product.id} />
-             
-          </div>
-     
 
-        )
-         
-    )) 
+  if (loading) {
+    content =  <div> loading... </div>
+  }
 
-  }
-   const nextSlide = () =>
-    {
-     setCurrent(current === length - 1 ? 0 : current + 1)
-  }
-  const prevSlide = () =>
-  {
-    setCurrent(current === 0 ? length - 1 : current - 1)
-    }
-    
+  content = products?.map((product, index) => (
+   current ===index &&( <div key={index}>
+      <ProductSlider product={product} />
+    </div>)
+  ));
+  const nextSlide = () => setCurrent(current === content.length - 1 ? 0 : current + 1);
+  const prevSlide = () => setCurrent(current === 0 ? content.length - 1 : current - 1);
+
   return (
-      <div> 
-<Header />
-         <div style = {{display:"flex"}}>
-          <Arrow1 src={Arrow} alt='arrow' onClick = {prevSlide}  />
-       <div style={{ display: "flex" }}>  {content}  </div>
+    <div> 
+      <Header />
+      <div style = {{display:"flex"}}>
+        <Arrow1 src={Arrow} alt='arrow' onClick = {prevSlide}  />
+        <div style={{ display: "flex" }}>
+          {content}
+        </div>
         <Arrow2 src={Arroww} alt='arrow' onClick={nextSlide} />
-</div>
       </div>
-   
-
-      );
+    </div>
+  );
 }
- 
-export default Fetch;

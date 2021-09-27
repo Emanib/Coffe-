@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-
-
+import { useState, useEffect} from 'react'
+import { useDispatchCart } from "./Context";
 const Wrapper = styled.div`
 width:100%;
 height:100%;
@@ -32,7 +32,7 @@ width:100;
 `;
 const Slider = styled.div`
 position:absolute;
-top:50px;
+top:60px;
 left:0;
 width:100%;
 height:100%;
@@ -43,14 +43,14 @@ justify-content:center;
 {
     content:'';
     position:absolute;
-    z-index:2;
+    /* z-index:2; */
     width:100%;
     height:100vh;
     bottom:0vh;
     left:0;
     overflow:hidden;
     opacity:.4;
-    background:linear-gradient(0deg, rgba(0,0,0,.2) 0%,rgba(0,0,0,.2) 50%,rgba(0,0,0,.6) 100% )
+    /* background:linear-gradient(0deg, rgba(0,0,0,.2) 0%,rgba(0,0,0,.2) 50%,rgba(0,0,0,.6) 100% ) */
 
 
 }
@@ -73,7 +73,7 @@ display:flex;
 flex-direction:column;
 h1
 {
-    color:#fff; 
+    color:blue; 
     font-size:clamp(1rem,8vw,2rem);
     font-weight:400;
     text-transform:uppercase;
@@ -84,53 +84,98 @@ h1
 
 }
 `;
+const Button = styled.div`
+z-index:10; 
+color:pink;
+position:relative;
+
+`
 
 const ProductSlider = ({product}) =>
 {
-   
-    return ( 
+    const [state, setState] = useState(product)
+    const dispatch = useDispatchCart()
+
+    // useEffect(() =>
+    // {
+    //       dispatch({ type: 'card', state })
+    // },[state])
+  
+
+    const addToCart = (item) => {
+        dispatch({type:'ADD',item})
+    };
+    // return <span>asd</span>;
+    // console.log(state);
+    if (!state) return;
+    return (
         <Wrapper>
-            <Slider>
-                <Slide>
-                    
-                    <Img src={product.imageUrl} alt="product" />
+        <Slider>
+         <Slide>
+                <Button onClick={() => addToCart(state)}  > Hello  </Button>
+                  <Img src={state.imageUrl} alt="product" />
                     <Content>
-                        <h1> {product.title} </h1>
+                        <h1>{state.title}</h1>
                         <h2> color  </h2>
-                        <div style = {{display:"flex"}}  >
-                            
-                            {product.color.map((cl, index) =>
-                                
-                                <div key={index} >
-                                    <input type="radio" />
-                                    {cl}
-                                </div>
-                           )}
-                        </div>
-                        <h2> Sizes   </h2>
-                               <div style = {{display:"flex"}}  >
-                            
-                            {product.size.map((cl, index) =>
-                                
-                                <div key={index} >
-                                    <input type="radio" />
-                                    {cl}
-                                </div>
-                           )}
-                        </div>
-            <p> {product.price} </p>
-            {/* <Btn > order now </Btn> */}
-                    </Content>
+        {state.color.map((cl, index) =>
+            <div key={index}>
+ <label htmlFor = {cl.index}> {cl}
+  <input type="radio" defaultChecked={state.color === cl} name="eman" id={cl.index}
+ onClick={() => { console.log(state); setState({...state, cl}) }} />
+         </label>
+            </div>
+        )}
+    </Content>
+         </Slide>
+        </Slider>
+          </Wrapper>
+       
+      )
+    // return (
         
-                </Slide>
+//         <Wrapper>
+//             <Slider>
+//                 <Slide>
+                    
+//                     <Img src={state.imageUrl} alt="product" />
+//                     <Content>
+//                         <h1>{state.title}</h1>
+//                         <h2> color  </h2>
+//                         <div style = {{display:"flex"}}  >
+//                                       <button onClick={() => addToCart(state)}  > Hello  </button>
+
+//                             {state?.color.map((cl, index) =>         
+//                                 <div key={index}  >
+//                                     <label htmlFor = {cl.index}> {cl}
+//                                         <input type="radio" defaultChecked={state.color === cl} name="eman" id={cl.index} onClick={() => { console.log("hojfzp"); setState([...state, cl]) }}/>
+//                                     </label>
+//                                     {/* {cl} */}
+//                                     <h1> radio is :{ state}</h1>
+//                                 </div>
+//                            )}
+//                         </div>
+//                         <h2> Sizes   </h2>
+//                                <div style = {{display:"flex"}}  >
+                            
+//                             {state?.size.map((size, index) =>
+//                                 <div key={index} >
+//                                     <input type="radio" defaultChecked = {state.size===size} name= "eman"  id={size.index} onClick={() => { console.log("hojfzp"); setState( [...state,size])} }    />
+//                                     {size}
+//                                 </div>
+//                            )}
+//                         </div>
+//             <p> {state.price} </p>
+//             {/* <Btn > order now </Btn> */}
+//                     </Content>
+        
+//                 </Slide>
           
-            </Slider>
+//             </Slider>
            
       
       
-</Wrapper>
-
-     );
+// </Wrapper>
+    // );
 }
  
 export default ProductSlider ;
@@ -171,9 +216,9 @@ export default ProductSlider ;
 
 //      return (
 //     <Router> 
-//          <Link to={`/coffe/${props.product.id}`}>
-//              <div style={{ backgroundImage: `url(props.product.imageUrl)` }}>  hello Eman  </div>
-//              <div> {props.product.price} </div>
+//          <Link to={`/coffe/${props.state.id}`}>
+//              <div style={{ backgroundImage: `url(props.state.imageUrl)` }}>  hello Eman  </div>
+//              <div> {props.state.price} </div>
 //              </Link>
 //             </Router> 
 // )

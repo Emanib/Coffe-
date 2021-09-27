@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { createGlobalStyle} from 'styled-components'
 import Toggle from './Toggle'
 import { useState } from 'react'
 // import Logo from '../../images/Logo.svg'
@@ -45,8 +45,11 @@ padding:0;
 flex-direction:column;
 position:fixed; 
 left:0;
-top:70px;
+top:0; 
+margin-top:70px;
 list-style:none;
+    background-color: #fff;
+    z-index: 10;
 /* background-color: pink; */
 
 
@@ -75,32 +78,44 @@ text-decoration:none;
 color:inherit;
 font-size:inherit; 
 `
-const NavLinkMob = (props) => {
+const GlobalStyle = createGlobalStyle`
+/* body{
+  overflow:hidden; 
+} */
+.parent
+{
+  display:none; 
+}
+
+`;
+const NavLinkMob = (props) =>
+{
   const [isOpen, setOpen] = useState(false)
   return (
+    <> 
     <Container>
       <Toggle isOpen={isOpen} toggle={() => setOpen(!isOpen)} />
-      {isOpen && (<LinkWrapper>
-        <LinkItem> <Link href='/'> Home </Link></LinkItem>
-        <LinkItem>  <Link href='/'> About us  </Link></LinkItem>
-        <LinkItem><Link href='/'> Promotion </Link>   </LinkItem>
-        <LinkItem> <Link href='/'> Shop </Link> </LinkItem>
-        <LinkItem> <Link href='/'> Contacts</Link></LinkItem>
-        <Box>
-          <Social src={inst} />
-          <Social src={face} />
-          <Social src={twitter} />
-        </Box>
+        {isOpen && (
+       
+        <LinkWrapper>
+          <GlobalStyle />
+          <LinkItem> <Link href='/'> Home </Link></LinkItem>
+          <LinkItem>  <Link href='/'> About us  </Link></LinkItem>
+          <LinkItem><Link href='/'> Promotion </Link>   </LinkItem>
+          <LinkItem> <Link href='/'> Shop </Link> </LinkItem>
+          <LinkItem> <Link href='/'> Contacts</Link></LinkItem>
+          <Box>
+            <Social src={inst} />
+            <Social src={face} />
+            <Social src={twitter} />
+          </Box>
 
-                  </LinkWrapper>)}
-      {/* <div>
-                <Logoo  primary src={Logo} alt="logo" />
-                <Logoo   src={ Samwayle} alt="text" />
-            </div> */}
-
-    </Container>
-
-  )
+        </LinkWrapper>)}
+          </Container>
+           </>
+      )
+                 
+ 
 }
 
 export default NavLinkMob
