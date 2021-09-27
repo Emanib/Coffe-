@@ -33,7 +33,7 @@ export default function Fetch() {
   const url = process.env.REACT_APP_API_URL;
       // const [state,setState] = useState("hot")
 
-  const [products, setProducts] = useState();
+  const [products, setProducts] = useState([]);
   const [current, setCurrent] = useState(0);
   const [error, setError] = useState(false); 
   const [loading, setLoading] = useState(true);

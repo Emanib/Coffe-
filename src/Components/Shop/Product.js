@@ -95,13 +95,6 @@ const ProductSlider = ({product}) =>
 {
     const [state, setState] = useState(product)
     const dispatch = useDispatchCart()
-
-    // useEffect(() =>
-    // {
-    //       dispatch({ type: 'card', state })
-    // },[state])
-  
-
     const addToCart = (item) => {
         dispatch({type:'ADD',item})
     };
@@ -112,70 +105,35 @@ const ProductSlider = ({product}) =>
         <Wrapper>
         <Slider>
          <Slide>
-                <Button onClick={() => addToCart(state)}  > Hello  </Button>
-                  <Img src={state.imageUrl} alt="product" />
-                    <Content>
-                        <h1>{state.title}</h1>
-                        <h2> color  </h2>
-        {state.color.map((cl, index) =>
-            <div key={index}>
- <label htmlFor = {cl.index}> {cl}
-  <input type="radio" defaultChecked={state.color === cl} name="eman" id={cl.index}
- onClick={() => { console.log(state); setState({...state, cl}) }} />
+     <Button onClick={() => addToCart(state)}  > Hello  </Button>
+      <Img src={state.imageUrl} alt="product" />
+         <Content>
+      <h1>{state.title}</h1>
+      <h2> color  </h2>
+     {state.color.map((cl, index) =>
+    <div key={index}>
+    <label htmlFor = {cl.index}> {cl}
+     <input type="radio" defaultChecked={state.color === cl} name="eman" id={cl.index}
+     onClick={() => { console.log(state); setState({...state, cl}) }} />
          </label>
             </div>
-        )}
+      )}
+     <h2> Size  </h2>  
+ {Object.values(state.size).map((size, index) =>
+  <div key={index} >
+ <label htmlFor = {size.index}> {size}
+  <input type="radio" defaultChecked={state.size === size} name="eman"
+  id={size.index} onClick={() => { console.log(state); setState((prev)=>({ ...prev, size}) ) }} />
+               </label>
+                  </div>
+                      )}
     </Content>
          </Slide>
         </Slider>
           </Wrapper>
        
       )
-    // return (
-        
-//         <Wrapper>
-//             <Slider>
-//                 <Slide>
-                    
-//                     <Img src={state.imageUrl} alt="product" />
-//                     <Content>
-//                         <h1>{state.title}</h1>
-//                         <h2> color  </h2>
-//                         <div style = {{display:"flex"}}  >
-//                                       <button onClick={() => addToCart(state)}  > Hello  </button>
-
-//                             {state?.color.map((cl, index) =>         
-//                                 <div key={index}  >
-//                                     <label htmlFor = {cl.index}> {cl}
-//                                         <input type="radio" defaultChecked={state.color === cl} name="eman" id={cl.index} onClick={() => { console.log("hojfzp"); setState([...state, cl]) }}/>
-//                                     </label>
-//                                     {/* {cl} */}
-//                                     <h1> radio is :{ state}</h1>
-//                                 </div>
-//                            )}
-//                         </div>
-//                         <h2> Sizes   </h2>
-//                                <div style = {{display:"flex"}}  >
-                            
-//                             {state?.size.map((size, index) =>
-//                                 <div key={index} >
-//                                     <input type="radio" defaultChecked = {state.size===size} name= "eman"  id={size.index} onClick={() => { console.log("hojfzp"); setState( [...state,size])} }    />
-//                                     {size}
-//                                 </div>
-//                            )}
-//                         </div>
-//             <p> {state.price} </p>
-//             {/* <Btn > order now </Btn> */}
-//                     </Content>
-        
-//                 </Slide>
-          
-//             </Slider>
-           
-      
-      
-// </Wrapper>
-    // );
+   
 }
  
 export default ProductSlider ;
