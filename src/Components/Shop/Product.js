@@ -1,95 +1,84 @@
 import styled from 'styled-components'
-import { useState, useEffect} from 'react'
+import { useState} from 'react'
 import { useDispatchCart } from "./Context";
 const Wrapper = styled.div`
-width:100%;
-height:100%;
-/* display:grid;
-grid-template-columns:repeat(3,1fr); */
-justify-content:center;
-/* position:relative; */
-overflow:hidden;
+
+display:grid;
+grid-template-columns:repeat(2,1fr);
+justify-content:space-around; 
 align-items:center; 
+gap:2px;
+
+
 
 `;
 const Btn = styled.button`
 border:none;
-background-color:#444444;
+background-color:#2D635E;
 color:#fff;
 display:flex; 
 align-items:center;
 justify-content:center;
 cursor:pointer; 
-width:100px;
+width:120px;
 height:50px;
-border-radius:6px; 
-/* flex-direction:column;  */
+border-radius:6px;
+margin-top:10px; 
+
 `
-const Slide = styled.div`
-z-index:1;
-height:100%;
-width:100; 
-`;
-const Slider = styled.div`
-position:absolute;
-top:60px;
-left:0;
-width:100%;
-height:100%;
-display:flex;
-align-items:center;
-justify-content:center;
-&::before
-{
-    content:'';
-    position:absolute;
-    /* z-index:2; */
-    width:100%;
-    height:100vh;
-    bottom:0vh;
-    left:0;
-    overflow:hidden;
-    opacity:.4;
-    /* background:linear-gradient(0deg, rgba(0,0,0,.2) 0%,rgba(0,0,0,.2) 50%,rgba(0,0,0,.6) 100% ) */
 
 
-}
-`;
 const Img = styled.img`
-position: absolute;
-top:0;
-left:0;
-width:100vw;
-height:100vh;
+top:40%;
+right:20%; 
+width:30vw;
+height:30vh;
 object-fit:cover;
 `;
-const Content = styled.div`
-position:relative;
-z-index:10;
-color: red;
-max-width:1600px;
-width:calc(100%-100px);
+const Content = styled.div``;
+const Box = styled.div`
 display:flex;
 flex-direction:column;
-h1
-{
-    color:blue; 
-    font-size:clamp(1rem,8vw,2rem);
-    font-weight:400;
-    text-transform:uppercase;
-    box-shadow: 0px 0px 20px rgba(0,0,0,.4);
-    text-align:left;
-    
-
-
-}
-`;
-const Button = styled.div`
-z-index:10; 
-color:pink;
-position:relative;
+margin-left:100px;   
+`
+const Input = styled.div`
+display:flex; 
+`
+const H2 = styled.h2`
+font-family:"Cedarville Cursive";
+color:#2D635E;
+font-size:36px;
+font-weight:400; 
+`
+const H1 = styled.h1`
+color:#2D635E;
 
 `
+const P = styled.p`
+font-family:"Alegreya Sans";
+font-size:19px;
+letter-spacing:.1%; 
+max-width:400px; 
+
+`
+const Type = styled.h3`
+font-family:"Poppins";
+color:#2D635E;
+font-size:20px; 
+font-weight: 700;
+`
+const Typo = (props) =>
+{
+    return (
+        <Content>
+            <H2> {props.h2} </H2> 
+            <H1> {props.h1} </H1>
+            <P> {props.p} </P>
+        </Content>
+     
+
+    )
+}
 
 const ProductSlider = ({product}) =>
 {
@@ -98,39 +87,38 @@ const ProductSlider = ({product}) =>
     const addToCart = (item) => {
         dispatch({type:'ADD',item})
     };
-    // return <span>asd</span>;
-    // console.log(state);
+
     if (!state) return;
     return (
-        <Wrapper>
-        <Slider>
-         <Slide>
-     <Button onClick={() => addToCart(state)}  > Hello  </Button>
-      <Img src={state.imageUrl} alt="product" />
-         <Content>
-      <h1>{state.title}</h1>
-      <h2> color  </h2>
-     {state.color.map((cl, index) =>
+        <Wrapper>   
+            <Box> 
+  <Typo h1="Coffee name" h2="the most wanted"  p=" H5 And we strive to do our best to maintain this connection - starting with our commitment starting with our commitment  to selecting " />
+         <Type> Colors </Type>
+                <Input>
+    {state.color.map((cl, index) =>
     <div key={index}>
     <label htmlFor = {cl.index}> {cl}
-     <input type="radio" defaultChecked={state.color === cl} name="eman" id={cl.index}
-     onClick={() => { console.log(state); setState({...state, cl}) }} />
+     <input type="radio"  name="color" id={cl.index}
+     onChange={() => {  setState((prev)=>({...prev, cl})) }} />
          </label>
-            </div>
-      )}
-     <h2> Size  </h2>  
- {Object.values(state.size).map((size, index) =>
+         </div>
+     )}
+    </Input>
+ <Type> Sizes  </Type>
+<Input> 
+{["large","small"].map((size, index) =>
   <div key={index} >
- <label htmlFor = {size.index}> {size}
-  <input type="radio" defaultChecked={state.size === size} name="eman"
-  id={size.index} onClick={() => { console.log(state); setState((prev)=>({ ...prev, size}) ) }} />
-               </label>
-                  </div>
-                      )}
-    </Content>
-         </Slide>
-        </Slider>
-          </Wrapper>
+  <input type="radio" name="size" checked= {size ===state.size}
+ onChange={() => {  setState((prev) => ({ ...prev, size })) }} />
+         {size}
+         </div>
+    )}
+    </Input>
+    <Btn onClick={() => addToCart(state)}> Order Now  </Btn>  
+            </Box>
+     <Img src={state.imageUrl} alt="product" />
+
+     </Wrapper>
        
       )
    
@@ -138,49 +126,6 @@ const ProductSlider = ({product}) =>
  
 export default ProductSlider ;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import { Router, Link,Route } from 'react-router-dom'
-//  const About = () => {
-//   return (
-//     <div>
-//       <p>About</p>
-//     </div>
-//   );
-// };
-// export default function Product(props)
-// {
-
-//      return (
-//     <Router> 
-//          <Link to={`/coffe/${props.state.id}`}>
-//              <div style={{ backgroundImage: `url(props.state.imageUrl)` }}>  hello Eman  </div>
-//              <div> {props.state.price} </div>
-//              </Link>
-//             </Router> 
-// )
-// }
 
 
 

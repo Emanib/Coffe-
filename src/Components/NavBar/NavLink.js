@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+
+
 const NavContainer = styled.div`
  display:flex;
  height:100%;
@@ -43,20 +45,23 @@ border:none;
 padding: .7em 1.3em;
 border-radius: 7px;
 font-weight: inherit;`
-const NavLink = (props) =>
+const NavLink = () =>
 {
 
   return (
     <NavContainer>
       <LinkWrapper>
         <LinkItem>
-          <Link1 href='#'>  About us </Link1>
+       
+           <Link1 href='#'>  About us </Link1>
           <Link1 href='#'>  Promotion </Link1>
           <Link1 href='#'>  Shop   </Link1>
-          <Link1 href='#'>  Contacts  </Link1>
-    
+            <Link1 href='#'>  Contacts  </Link1>
+             <Btn> Contact Us</Btn>
+       
+         
+         
 
-          <Btn> Contact Us</Btn>
         </LinkItem>
 
       </LinkWrapper>

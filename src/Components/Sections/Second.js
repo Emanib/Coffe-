@@ -45,7 +45,7 @@ color:#444A4A;
 font-size:15px;
 font-weight:400;
 line-height:30px;
-@media (max-width: 768px)
+@media (max-width: 800px)
 {
    
     width:270px; 
