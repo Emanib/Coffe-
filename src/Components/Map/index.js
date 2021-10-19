@@ -4,8 +4,8 @@ export const Map = () => {
   return (
     <MapContainer
       center={[31.952162, 35.233154]} zoom={13} scrollWheelZoom={false} style={{
-        width: '100%',
-        height: '100vh'
+        width: '50vw',
+        height: '50vh'
       }}
     >
       <TileLayer

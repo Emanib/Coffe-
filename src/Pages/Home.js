@@ -1,6 +1,6 @@
 // import NavBar from '../Components/NavBar'
  import {Card} from '../Components/Card/Slider'
-// import {Map} from './Components/Map'
+import Footer from '../Components/Sections/Footer'
 import First from '../Components/Sections/First'
 import Second from '../Components/Sections/Second'
 import Third from '../Components/Sections/Third'
@@ -14,7 +14,8 @@ const Home = () =>
       <First />
       <Second />
       <Third />
-      <Card />        
+        <Card />
+      <Footer/>  
 </div>
        
      );

@@ -28,14 +28,13 @@ left:164px;
 `
 const Background = styled.div`
 background-color:#E3EBE7;
-
   position:absolute;
   top:90px;
   width:350px;
   height:320px;
   left:838px; 
 `
-const Layer = styled.svg`
+const Layer = styled.img`
 width:300px;
 height:250px;
 position:absolute;
@@ -78,7 +77,7 @@ const Box1 = styled.div`
   align-items:center;
 width:100%; 
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
 
   text-align:center;
   display:flex;
@@ -91,12 +90,12 @@ width:100%;
 `
 const Box2 = styled.div`
 
-  @media (max-width: 768px) {
+  @media (max-width: 800px) {
 display:none;
   }
 
 `
-const Img = styled.svg`
+const Img = styled.img`
 width:20px;
 height:20px;
 margin:10px;
@@ -122,7 +121,6 @@ const First = () => {
  </Link> 
       </Box1>
       <Box2>
-
         <Background> <Layer src={coffee} alt='coffee' /></Background>
         <Small />
         <Social>

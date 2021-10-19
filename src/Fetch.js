@@ -5,9 +5,7 @@ import { useState, useEffect } from 'react'
 import ProductSlider from './Components/Shop/Product'
 import Arroww from './images/Arroww.svg'
 import Arrow from './images/Arrow.svg'
-import { useDispatchCart } from "./Components/Shop/Context";
-import { CartStateContext } from './Components/Shop/Context'
-import {useContext } from 'react'
+
 const Arrow1 = styled.img`
 /* width:100%;  */
 z-index:10;
@@ -33,7 +31,7 @@ export default function Fetch() {
   const url = process.env.REACT_APP_API_URL;
       // const [state,setState] = useState("hot")
 
-  const [products, setProducts] = useState();
+  const [products, setProducts] = useState([]);
   const [current, setCurrent] = useState(0);
   const [error, setError] = useState(false); 
   const [loading, setLoading] = useState(true);
@@ -76,9 +74,9 @@ export default function Fetch() {
   return (
     <div> 
       <Header />
-      <div style = {{display:"flex"}}>
+      <div>
         <Arrow1 src={Arrow} alt='arrow' onClick = {prevSlide}  />
-        <div style={{ display: "flex" }}>
+        <div >
           {content}
         </div>
         <Arrow2 src={Arroww} alt='arrow' onClick={nextSlide} />

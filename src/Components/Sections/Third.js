@@ -78,12 +78,10 @@ color:#fff;
 
 `
 
-
 const Third = () =>
 {
 
     return ( 
-
         <Box>
             <Box1 >  
                 <Title>  { data.title}</Title>

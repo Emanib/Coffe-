@@ -85,12 +85,11 @@ export function Card () {
   const [current, setCurrent] = useState(0)
   const length = slides.length
   const Next = () => {
-    console.log('eman')
+ 
     setCurrent(current === length - 1 ? 0 : current + 1)
   }
-  console.log(current)
+  // console.log(current)
   const Prev = () => {
-    console.log('ola')
     setCurrent(current === 0 ? length - 1 : current - 1)
   }
   return (
