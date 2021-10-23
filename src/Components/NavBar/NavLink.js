@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-
-
+import {Link} from 'react-router-dom'
+import Header from '../Shop/Header'
 const NavContainer = styled.div`
  display:flex;
  height:100%;
@@ -47,15 +47,14 @@ border-radius: 7px;
 font-weight: inherit;`
 const NavLink = () =>
 {
-
   return (
     <NavContainer>
       <LinkWrapper>
         <LinkItem>
-       
-           <Link1 href='#'>  About us </Link1>
+       <Header/>
+     <Link to = "/" style = {{ textDecoration :"none", color: "inherit"}}>  Home </Link>   
           <Link1 href='#'>  Promotion </Link1>
-          <Link1 href='#'>  Shop   </Link1>
+             <Link to = "/shop" style = {{ textDecoration :"none", color: "inherit"}}>  shop </Link>
             <Link1 href='#'>  Contacts  </Link1>
              <Btn> Contact Us</Btn>
        

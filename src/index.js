@@ -4,14 +4,16 @@ import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import {CartProvider} from './Components/Shop/Context'
-// import {AppProvider} from './Components/Shop/Context'
+
+
 ReactDOM.render(
   <React.StrictMode>
-    {/* <AppProvider>  */}
+
     <CartProvider> 
-             <App />
-     {/* </AppProvider>  */}
+            <App />
+
   </CartProvider>
+   
   </React.StrictMode>,
   document.getElementById('root')
 )

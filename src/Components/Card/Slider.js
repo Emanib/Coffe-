@@ -1,5 +1,6 @@
 import { slides } from './data'
 import React, { useState } from 'react'
+import {Link} from 'react-router-dom'
 
 import Arroww from '../../images/Arroww.svg'
 import Arrow from '../../images/Arrow.svg'
@@ -21,10 +22,9 @@ justify-content:space-around;
 
 `
 const Ca = styled.div`
-/* background-color:blue ; */
 display:flex;
   justify-content: center;
-  /* align-items: center; */
+
   /* opacity: ${({ active }) => (active ? '0' : '1')}; */
   width:339px;
   height:458px;
@@ -79,7 +79,6 @@ const Arow = styled.img`
 @media (max-width: 768px){
   display:none; 
 }
-/* width:100%;  */
 `
 export function Card () {
   const [current, setCurrent] = useState(0)
@@ -88,7 +87,6 @@ export function Card () {
  
     setCurrent(current === length - 1 ? 0 : current + 1)
   }
-  // console.log(current)
   const Prev = () => {
     setCurrent(current === 0 ? length - 1 : current - 1)
   }
@@ -99,11 +97,10 @@ export function Card () {
       {[...slides].map((slide, i) => {
         return (
           <Ca key={i}>
-            {/* {i === current && ( */}
             <Elements>
               <Title> {slide.title} </Title>
               <Topic> {slide.description}  </Topic>
-              <Btn> order Now </Btn>
+              <Link to = "/shop">  <Btn> order Now </Btn></Link>
             </Elements>
 
           </Ca>

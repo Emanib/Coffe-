@@ -12,10 +12,12 @@ function App()
 {
   return (
     <div>
-       <NavBar />
+      
       <div className = "parent">
-        <Router>
+       <Router>
+           <NavBar />
         <Switch>
+         
         <RouterWrapper path="/"  exact component={Home} layout = {Layout} />
         <RouterWrapper path="/shop" exact component={Shop} layout={Layout} />
         <RouterWrapper path = "/cart" exact component = {Store}  layout = {Layout} />

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import {Link} from 'react-router-dom'
 import juice from '../../images/juice.svg'
 const data = {
     title: "Coffee of the day",
@@ -86,7 +87,7 @@ const Third = () =>
             <Box1 >  
                 <Title>  { data.title}</Title>
                 <Content> {data.content} </Content>
-                <Btn> order Now</Btn>
+            <Link to = "/shop">      <Btn> order Now</Btn> </Link>
             </Box1>
         <Box2 >
                 <Img src={juice } alt="juice"/>

@@ -1,31 +1,62 @@
 
 import { useCart, useDispatchCart } from "../Components/Shop/Context";
-import { Link } from "react-router-dom";
+import styled from 'styled-components'
+const Main = styled.div`
+/* background-color:#2D635E; */
+display:flex;
+flex-direction: column;
+gap:15px;
 
+p {
+  text-align:center;
+  font-weight: 700;
+}
+`
+const Article = styled.div`
+display:flex;
+align-items:center;
+justify-content:space-evenly;
+border: 1px solid ;
+
+button
+{
+  color:red;
+  background-color: none;
+  border:none;
+  cursor:pointer
+}
+`
+const Title = styled.div`
+display:flex;
+align-items:center;
+justify-content:space-evenly;
+margin-right:100px; 
+`
+const H2 = styled.h2`
+font-family: "Mulish";
+font-weight: 700;
+line-height: 40px ;
+text-transform:uppercase; 
+`
+const Img = styled.img`
+width:150px; 
+`
+const data = ["product","price","color","size"]
 const CartItem = ({ ...prop }) =>
 {
   return (
-    <article>
-      <div className="dt w-100 bb b--black-10 pb2 mt2 dim blue" href="#0">
-        <div className="dtc w3">
-          <img src={prop.product.imageUrl} alt="product" />
-        </div>
-        <div >
-          <h1 >{prop.product.title}</h1>
-          <dl>
-            <dd >
-              {prop.product.price.toLocaleString("en", {
+    <Article >
+   
+          <Img src={prop.product.imageUrl} alt="product" />
+             <div>  {prop.product.price.toLocaleString("en", {
                 style: "currency",
                 currency: "USD"
-              })}
-            </dd>
-            <h1> Color {prop.product.cl} </h1>
-            <h1> Size { prop.product.size}</h1>
-          </dl>
-          <button onClick={() => prop.handleRemove(prop.index)}>Remove from cart</button>
-        </div>
-      </div>
-    </article>
+              })}   </div>  
+            <p>  {prop.product.cl} </p>
+            <p>  { prop.product.size}</p>
+          <button onClick={() => prop.handleRemove(prop.index)}><i class="fas fa-trash"></i></button>
+       
+    </Article>
   );
 };
 export default function Store()
@@ -49,15 +80,18 @@ export default function Store()
     }
   else  if(items.length !==0)
     {
-        return (<main>
-             <Link to = "/shop">  shop </Link>
+      return (
+        <Main>
             <p>
         Total price:{" "}
         {totalPrice.toLocaleString("en", {
           style: "currency",
           currency: "USD"
         })}
-            </p>
+          </p>
+             <Title >
+          {data.map((item)=>( <H2> {item} </H2>))}
+      </Title>
           {items.map((item, index) => (
         <CartItem
           handleRemove={handleRemove}
@@ -65,8 +99,9 @@ export default function Store()
           product={item}
           index={index}       
         />
-      ))}
-        </main>)
+          ))}
+          
+        </Main>)
    
         }
     
